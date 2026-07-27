@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✏️ FILL IN: the browser tab title — usually your name -->
+  <title>Your Name — Portfolio</title>
+
+  <!-- This line loads the fonts. Just leave it alone. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ============================================================= -->
+  <!--  🎨  STYLES                                                    -->
+  <!--  You can IGNORE this whole section.                            -->
+  <!--  If you feel adventurous, change the colors in the palette     -->
+  <!--  right below — just swap the hex codes (the #xxxxxx values).   -->
+  <!-- ============================================================= -->
+  <style>
+    :root {
+      /* ---- YOUR COLOR PALETTE — change these hex codes to recolor the site ---- */
+      --ink:      #123b3b;  /* deep teal — sidebar + headings           */
+      --ink-soft: #1c5252;  /* a lighter teal                           */
+      --paper:    #f9f6ef;  /* warm off-white — the main background      */
+      --accent:   #e8a63c;  /* golden amber — links, highlights          */
+      --text:     #2a2f2f;  /* main body text                           */
+      --muted:    #6b7574;  /* soft grey for small text                  */
+      --card:     #ffffff;  /* project card background                   */
+    }
+
+    /* ---- Everything below is layout. You don't need to touch it. ---- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--paper);
+      line-height: 1.65;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ---------- SIDEBAR (the fixed "calling card" on the left) ---------- */
+    .sidebar {
+      background: var(--ink);
+      color: #eef3f1;
+      width: 320px;
+      flex-shrink: 0;
+      padding: 3rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      background: var(--ink-soft);
+    }
+
+    .name {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.9rem;
+      line-height: 1.1;
+      margin-top: 1.4rem;
+      color: #fff;
+      position: relative;
+      display: inline-block;
+    }
+    /* the little hand-drawn-style underline under the name */
+    .name::after {
+      content: "";
+      display: block;
+      width: 58px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+      margin: 0.7rem auto 0;
+    }
+
+    .tagline {
+      color: #b9c8c4;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .side-nav {
+      margin-top: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      width: 100%;
+    }
+    .side-nav a {
+      color: #dfeae7;
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      padding: 0.5rem 0;
+      border-radius: 8px;
+      transition: color 0.2s;
+    }
+    .side-nav a:hover { color: var(--accent); }
+
+    .socials {
+      margin-top: auto;
+      padding-top: 2rem;
+      display: flex;
+      gap: 1.1rem;
+    }
+    .socials a {
+      color: #cfe0dc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .socials a:hover { color: var(--accent); }
+
+    /* ---------- MAIN CONTENT (the scrolling area on the right) ---------- */
+    .main {
+      flex: 1;
+      padding: 4.5rem clamp(1.5rem, 5vw, 5rem);
+      max-width: 900px;
+    }
+
+    section { margin-bottom: 4.5rem; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .lead { font-size: 1.15rem; color: var(--text); }
+    p + p { margin-top: 1rem; }
+
+    /* ---------- PROJECT GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.8rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(18,59,59,0.07);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 34px rgba(18,59,59,0.14);
+    }
+    /* the colored "thumbnail" area at the top of each card.
+       Replace the background with a real image whenever you like. */
+    .thumb {
+      height: 150px;
+      background: linear-gradient(135deg, var(--ink-soft), var(--accent));
+    }
+    .thumb.two { background: linear-gradient(135deg, #7b4b8a, var(--accent)); }
+    .thumb.three { background: linear-gradient(135deg, var(--ink), #4a8f8f); }
+    .thumb.four { background: linear-gradient(135deg, #b5562f, var(--accent)); }
+    .card-body { padding: 1.3rem 1.4rem 1.5rem; }
+    .card-body h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .card-body p { font-size: 0.95rem; color: var(--muted); }
+
+    /* ---------- CONTACT ---------- */
+    a.link { color: var(--accent); font-weight: 600; text-decoration: none; }
+    a.link:hover { text-decoration: underline; }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 1.5rem;
+    }
+
+    /* ---------- MOBILE: stack the sidebar on top ---------- */
+    @media (max-width: 820px) {
+      body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 2.5rem 1.5rem;
+      }
+      .socials { margin-top: 1.5rem; }
+      .main { padding: 2.5rem 1.5rem; max-width: 100%; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    /* be kind to people who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* visible keyboard focus */
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+
+
+<!-- ================================================================= -->
+<!--                                                                    -->
+<!--   👇  EVERYTHING BELOW THIS LINE IS YOURS TO EDIT.                 -->
+<!--   Look for the  ✏️ FILL IN  notes and type over the placeholders.  -->
+<!--                                                                    -->
+<!-- ================================================================= -->
+<body>
+
+  <!-- ===================== LEFT SIDEBAR ===================== -->
+  <aside class="sidebar">
+
+    <!-- ✏️ FILL IN: your photo.
+         Option A (easiest): keep this default avatar for now.
+         Option B: upload a photo named  me.jpg  to your project,
+                   then delete this <svg> and use the <img> line instead:
+         <img class="avatar" src="me.jpg" alt="A photo of me">
+    -->
+    <svg class="avatar" viewBox="0 0 140 140" role="img" aria-label="Placeholder avatar">
+      <rect width="140" height="140" fill="#1c5252"/>
+      <circle cx="70" cy="55" r="26" fill="#e8a63c"/>
+      <circle cx="70" cy="140" r="46" fill="#e8a63c"/>
+    </svg>
+
+    <!-- ✏️ FILL IN: your name -->
+    <h1 class="name">Your Name</h1>
+
+    <!-- ✏️ FILL IN: one short line about you -->
+    <p class="tagline">Student · Aspiring web developer</p>
+
+    <!-- These jump to the sections below. Leave them as-is. -->
+    <nav class="side-nav">
+      <a href="#about">About</a>
+      <a href="#work">My Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ✏️ FILL IN: your links. Change the text AND the href="..." address.
+         Delete any you don't want. -->
+    <div class="socials">
+      <a href="https://github.com/yourusername">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+      <a href="mailto:you@example.com">Email</a>
+    </div>
+  </aside>
+
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="main">
+
+    <!-- ---------- ABOUT ---------- -->
+    <section id="about">
+      <p class="eyebrow">Hello there</p>
+      <!-- ✏️ FILL IN: a friendly headline -->
+      <h2>I'm building things on the web, one line at a time.</h2>
+
+      <!-- ✏️ FILL IN: 2–3 sentences about you. Real example to copy the style of: -->
+      <p class="lead">I'm a first-year design student who loves making things people actually enjoy using. Right now I'm learning to code, and this site is my very first project.</p>
+      <p>When I'm not at my laptop you'll find me hiking, sketching, or hunting for the best coffee in town. Scroll down to see what I've been working on.</p>
+    </section>
+
+    <!-- ---------- WORK / PROJECTS ---------- -->
+    <section id="work">
+      <p class="eyebrow">Selected work</p>
+      <h2>Things I've made</h2>
+
+      <div class="grid">
+
+        <!-- ✏️ FILL IN: project 1. To use a real image instead of the color block,
+             replace  <div class="thumb"></div>  with:
+             <img class="thumb" src="project1.jpg" alt="Screenshot of my project"> -->
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h3>Project One</h3>
+            <p>A short sentence about what it is and what you learned making it.</p>
+          </div>
+        </article>
+
+        <!-- ✏️ FILL IN: project 2 -->
+        <article class="card">
+          <div class="thumb two"></div>
+          <div class="card-body">
+            <h3>Project Two</h3>
+            <p>A short sentence about what it is and what you learned making it.</p>
+          </div>
+        </article>
+
+        <!-- ✏️ FILL IN: project 3 -->
+        <article class="card">
+          <div class="thumb three"></div>
+          <div class="card-body">
+            <h3>Project Three</h3>
+            <p>A short sentence about what it is and what you learned making it.</p>
+          </div>
+        </article>
+
+        <!-- ✏️ FILL IN: project 4 (or delete this whole <article> block) -->
+        <article class="card">
+          <div class="thumb four"></div>
+          <div class="card-body">
+            <h3>Project Four</h3>
+            <p>A short sentence about what it is and what you learned making it.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ---------- CONTACT ---------- -->
+    <section id="contact">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Say hello</h2>
+      <!-- ✏️ FILL IN: change the email address in BOTH places below -->
+      <p class="lead">The best way to reach me is by email at
+        <a class="link" href="mailto:you@example.com">you@example.com</a>.
+        I'd love to hear from you.
+      </p>
+
+      <p class="footer-note">
+        <!-- ✏️ FILL IN: your name and the year -->
+        © 2026 Your Name · Built by hand as my first website.
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>
