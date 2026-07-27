@@ -24,7 +24,7 @@ GitHub is the free website that will store your site and put it online.
 1. Go to **[github.com](https://github.com)**.
 2. Click **Sign up**.
 3. Enter your email, create a password, and pick a **username**.
-4. ⚠️ **Choose your username carefully** — it becomes part of your website address, and it's hard to change later. Pick something clean and professional, like your name (for example `maria-lopez` or `jsmith`). Avoid nicknames you wouldn't want on a resume.
+4. ⚠️ **Choose your username carefully** — it becomes part of your website address, and it's hard to change later. Pick something clean and professional, like your name (for example `maria-lopez`).
 5. Follow the prompts to verify your email. You're in!
 
 > 💡 Write your username down. You'll need it in the next step.
@@ -79,13 +79,13 @@ Right now it shows the placeholder text. Next you'll make it yours.
 
 ## Part 4 — Meet your AI helper 🤖
 
-Before you start editing, let's turn on a helper. GitHub has a built-in AI assistant called **Copilot**. It can explain the code to you, help you word things, suggest colors, and tell you what you broke when something looks wrong.
+Before you start editing, let's turn on a helper. GitHub has a built-in AI assistant called **Copilot**. It can explain the code to you, help you word things, suggest colors, and tell you what you're doing wrong.
 
 ### Opening it
 
 1. Look for the **Copilot icon** in the top bar of any GitHub page (it looks like a small robot face 🤖). Click it.
 2. A chat panel opens on the side. Type your question and press Enter.
-3. If you're asked to enable Copilot, follow the prompts — GitHub offers a **free plan** that's plenty for this project. (If you're a student, you may also qualify for the free **GitHub Student Developer Pack** at [education.github.com](https://education.github.com).)
+3. If you're asked to enable Copilot, follow the prompts — GitHub offers a **free plan** that's plenty for this project. (If you're a student, you may also qualify for the free **GitHub Student Pack**.)
 
 > 💡 Can't find the icon? Go to **[github.com/copilot](https://github.com/copilot)** directly.
 
@@ -144,7 +144,7 @@ Now the fun part: replacing the placeholder text with your own.
    - Update the email and links.
 5. **Don't worry about the code above the big banner** — that's just the design. You only edit the parts below the line that says *"EVERYTHING BELOW THIS LINE IS YOURS TO EDIT."*
 
-> 🤖 **Stuck on wording?** This is the moment to use Copilot. Tell it what you actually did — *"I built a birdhouse and a website for my mom's bakery"* — and ask it to help you describe those projects in one sentence each. Then edit what it gives you until it sounds like you.
+> 🤖 **Stuck on wording?** This is the moment to use Copilot. Tell it what you actually did — *"I built a birdhouse and a website for my mom's bakery"* — and ask it to help you describe those.
 
 ### Saving your changes
 
@@ -158,23 +158,50 @@ When you're happy with an edit:
 
 ---
 
-## Part 6 — Keep improving it
+## Part 6 — Add Your Profile Photo 📸
+
+Want to replace the emoji with a real photo of yourself? Follow these steps:
+
+### Step 1: Prepare your photo
+- Pick a clear, professional headshot or portrait photo
+- The file should be named `profile.jpg` or `profile.png`
+- **Good size:** Between 500×500 pixels and 2000×2000 pixels
+
+### Step 2: Upload the photo to your repository
+1. Go to your repository's main page (click the **Code** tab).
+2. Click **Add file** (green button, top right).
+3. Choose **Upload files**.
+4. **Drag and drop** your photo, or click **choose your files** to select it.
+5. In the **"Add files here"** section at the bottom, type: `assets/` before the filename to create a folder.
+   - So if your file is `profile.jpg`, it becomes `assets/profile.jpg`
+6. Click **Commit changes** (green button, bottom right).
+
+### Step 3: Done! ✨
+Your photo appears automatically in the circular avatar on your site. The website is already set up to use it!
+
+> 💡 **Tips:**
+> - Make sure the photo fills the whole frame (no tiny person in a giant background).
+> - The photo will be circular on the website, so a square or portrait photo works best.
+> - If you want to change the photo later, just upload a new `profile.jpg` and it replaces the old one.
+
+---
+
+## Part 7 — Keep improving it
 
 You can edit `index.html` as many times as you want. Each time:
 
 **Open `index.html` → click the pencil ✏️ → change something → Commit changes → refresh your site.**
 
 Ideas to try:
-- Change the colors! Near the top of the file there's a **color palette** — six lines with color codes like `#e8a63c`. Swap them for your favorite colors ([htmlcolorcodes.com](https://htmlcolorcodes.com) has a color picker that gives you codes).
-- Add a real photo of yourself (the file has a comment explaining how).
+- Change the colors! Near the top of the file there's a **color palette** — six lines with color codes like `#e8a63c`. Swap them for your favorite colors ([htmlcolorcodes.com](https://htmlcolorcodes.com)).
 - Add or remove projects.
-- 🤖 Ask Copilot for something new: *"How do I add a button that links to my Instagram?"* or *"How do I make my name bigger on phones?"* Try it, commit it, and see what happens. You can always undo.
+- 🤖 Ask Copilot for something new: *"How do I add a button that links to my Instagram?"* or *"How do I make my name bigger on phones?"* Try it, commit it, and see what happens. You can always undo it.
 
 ---
 
 ## 🆘 Something not working?
 
-> 🤖 **Try this first:** open Copilot and describe the problem in plain English — *"my GitHub Pages site shows a 404 and I don't know why"* — and paste any error message you see. It's often faster than searching.
+> 🤖 **Try this first:** open Copilot and describe the problem in plain English — *"my GitHub Pages site shows a 404 and I don't know why"* — and paste any error message you see. It's often the fastest way to fix it.
 
 **My site shows a 404 / "page not found" error.**
 Give it a few minutes — new sites can take up to 5 minutes the first time. Then check that in **Settings → Pages** the branch is set to **main**. Refresh.
@@ -183,13 +210,18 @@ Give it a few minutes — new sites can take up to 5 minutes the first time. The
 Make sure you clicked **Commit changes**. Then wait a minute and do a hard refresh (`Ctrl` + `Shift` + `R`, or `Cmd` + `Shift` + `R` on a Mac).
 
 **The layout looks broken after I edited.**
-You probably deleted a symbol by accident — like a `<`, `>`, or `"`. Undo your last change and try again, editing only the words, not the symbols around them. Or paste the section into Copilot and ask what's missing.
+You probably deleted a symbol by accident — like a `<`, `>`, or `"`. Undo your last change and try again, editing only the words, not the symbols around them. Or paste the section into Copilot and ask what went wrong.
 
 **I can't find the `index.html` file.**
 Make sure you're on the **Code** tab of your repository, not Settings.
 
 **Copilot's suggestion made things worse.**
 No problem — that happens. Undo your change (or edit it back), and tell Copilot what went wrong: *"That broke my page. Here's what it looks like now."* You're the one in charge; it's just a helper.
+
+**My photo didn't show up.**
+- Check that the file is named `profile.jpg` (lowercase, with the `.jpg` extension).
+- Check that it's in the `assets/` folder (not just at the root of your repository).
+- Wait a minute and refresh your browser with `Ctrl` + `Shift` + `R` (or `Cmd` + `Shift` + `R` on Mac).
 
 ---
 
@@ -202,5 +234,6 @@ No problem — that happens. Undo your change (or edit it back), and tell Copilo
 - [ ] Opened Copilot and asked it at least one question about my code
 - [ ] Replaced every `✏️ FILL IN` with my own words — in my own voice
 - [ ] Committed my changes and saw them appear on my live site
+- [ ] Added my profile photo to the `assets/` folder
 
 When every box is checked, you have a finished, live portfolio website that's all yours. Share the link and be proud of it! 🚀
